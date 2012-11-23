@@ -3,6 +3,8 @@ autoload -Uz compinit vcs_info
 source ~/.zsh/spectrum			# 256-bit color codes
 source ~/.zsh/command_coloring	# inline command highlighting
 source ~/.zsh/compsys			# Awesome completion rules
+source ~/.zsh/TerminalCWD		# Help Terminal.app remember CWD
+
 
 # Set our options
 setopt auto_cd					# cd when just a path is entered
