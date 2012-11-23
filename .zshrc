@@ -1,7 +1,8 @@
 # Auto-load anything we need later
 autoload -Uz compinit vcs_info
 source ~/.zsh/spectrum			# 256-bit color codes
-
+source ~/.zsh/command_coloring	# inline command highlighting
+source ~/.zsh/compsys			# Awesome completion rules
 
 # Set our options
 setopt auto_cd					# cd when just a path is entered
@@ -16,6 +17,11 @@ setopt hist_no_store			# don't store history lookups in history
 HISTSIZE=1000					# history entries saved in memory
 SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
 HISTFILE=~/.history				# history file path
+
+
+# ls Colors
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 
 # Prompt colors
@@ -108,23 +114,3 @@ alias -s {com,net,org}='open_url'							# opens link with default browser
 open_url() {
 	open "http://$@"
 }
-
-
-# Use modern completion system
-compinit
-
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
