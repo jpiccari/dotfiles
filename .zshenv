@@ -1,4 +1,3 @@
-CLICOLOR=yes
 EDITOR=nano
 VISUAL=less
 BLOCKSIZE=K
