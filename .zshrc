@@ -45,20 +45,10 @@ ZSH_PROMPT_COLOR_NO_SUCCESS="$FG[200]"
 
 # Version control info
 zstyle ':vcs_info:*' enable git #svn
-zstyle ':vcs_info:*' disable-patterns "$HOME(|/.zsh*)"
-#zstyle ':vcs_info:git*' check-for-changes true
-zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%c%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
-zstyle ':vcs_info:git*+set-message:*' hooks git-unstaged git-untracked git-st
-+vi-git-unstaged(){
-	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-		git status --porcelain | grep 'M' &> /dev/null ; then
-		# This will show the marker if there are any untracked files in repo.
-		# If instead you want to show the marker only if there are untracked
-		# files in $PWD, use:
-		#[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-		hook_com[staged]=" ⚡"
-	fi
-}
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr 'º'
+zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%u%c%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
+zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 +vi-git-untracked(){
 	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
 		git status --porcelain | grep '??' &> /dev/null ; then
@@ -66,7 +56,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-unstaged git-untracked git-st
 		# If instead you want to show the marker only if there are untracked
 		# files in $PWD, use:
 		#[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-		hook_com[staged]=" ⚡"
+		hook_com[staged]="⚡ "
 	fi
 }
 function +vi-git-st() {
