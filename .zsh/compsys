@@ -62,6 +62,7 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' verbose yes
 
 # Fuzzy match mistyped completions.
