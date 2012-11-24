@@ -23,7 +23,7 @@ HISTFILE=~/.history				# history file path
 
 # ls Colors
 export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
 
 
 # Prompt colors
