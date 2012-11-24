@@ -22,6 +22,10 @@ SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
 HISTFILE=~/.history				# history file path
 
 
+# ZSH Syntax Highlighters
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+
 # ls Colors
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
