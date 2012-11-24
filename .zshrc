@@ -1,7 +1,8 @@
 # Auto-load anything we need later
 autoload -Uz compinit vcs_info
 source ~/.zsh/spectrum			# 256-bit color codes
-source ~/.zsh/command_coloring	# inline command highlighting
+source ~/.zsh/syntaxHighlight	# command syntax highlighting
+source ~/.zsh/historySubstr		# fish-style history search
 source ~/.zsh/compsys			# Awesome completion rules
 source ~/.zsh/TerminalCWD		# Help Terminal.app remember CWD
 
@@ -16,7 +17,7 @@ setopt hist_no_store			# don't store history lookups in history
 
 
 # History variables
-HISTSIZE=1000					# history entries saved in memory
+HISTSIZE=5000					# history entries saved in memory
 SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
 HISTFILE=~/.history				# history file path
 
@@ -40,7 +41,7 @@ ZSH_PROMPT_COLOR_NO_SUCCESS="$FG[200]"
 
 # Version control info
 zstyle ':vcs_info:*' enable git #svn
-zstyle ':vcs_info:*' disable-patterns "$HOME(|/*)"
+zstyle ':vcs_info:*' disable-patterns "$HOME(|/.zsh*)"
 #zstyle ':vcs_info:git*' check-for-changes true
 zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%c%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
 zstyle ':vcs_info:git*+set-message:*' hooks git-unstaged git-untracked git-st
