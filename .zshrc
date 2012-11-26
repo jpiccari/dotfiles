@@ -46,6 +46,7 @@ ZSH_PROMPT_COLOR_NO_SUCCESS="$FG[200]"
 # Version control info
 zstyle ':vcs_info:*' enable git #svn
 zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '+'
 zstyle ':vcs_info:git:*' unstagedstr 'º'
 zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%u%c%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked

@@ -1,0 +1,2 @@
+# Don't track compiled zsh scripts
+*.zwc
