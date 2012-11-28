@@ -113,3 +113,9 @@ alias -s {com,net,org}='open_url'							# opens link with default browser
 open_url() {
 	open "http://$@"
 }
+
+
+# Compile zcompdump and keep it up-to-date
+if  [ "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" -o ! -e "$HOME/.zcompdump.zwc" ]; then
+	zcompile "$HOME/.zcompdump"
+fi
