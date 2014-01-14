@@ -112,7 +112,7 @@ precmd() {
 
 # Aliases
 alias _='sudo'
-alias edit='open -a /Applications/Sublime\ Text\ 2.app'		# edit [file] opens file in ST2
+alias edit='subl'											# edit [file] opens file in ST2
 alias -s {com,net,org}='open_url'							# opens link with default browser
 open_url() {
 	open "http://$@"
