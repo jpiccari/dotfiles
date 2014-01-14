@@ -16,6 +16,10 @@ setopt hist_expire_dups_first	# expire duplicate entries in history first
 setopt hist_no_store			# don't store history lookups in history
 
 
+# Key bindings
+bindkey -s '^E' '^qedit \eg\n'
+
+
 # History variables
 HISTSIZE=5000					# history entries saved in memory
 SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
