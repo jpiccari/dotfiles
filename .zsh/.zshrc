@@ -18,7 +18,7 @@ setopt hist_no_store			# don't store history lookups in history
 
 
 # Key bindings
-bindkey -s '^E' '^qedit \eg\n'
+bindkey -s '^O' '^qedit \eg\n'
 
 
 # History variables
