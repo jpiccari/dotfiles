@@ -1,5 +1,5 @@
 # Auto-load anything we need later
-autoload -Uz compinit vcs_info
+autoload -Uz vcs_info
 source ~/.zsh/spectrum			# 256-bit color codes
 source ~/.zsh/syntaxHighlight	# command syntax highlighting
 source ~/.zsh/historySubstr		# fish-style history search
@@ -117,9 +117,3 @@ alias -s {com,net,org}='open_url'							# opens link with default browser
 open_url() {
 	open "http://$@"
 }
-
-
-# Compile zcompdump and keep it up-to-date
-if  [ "$ZDORDIR/.zcompdump" -nt "$ZDORDIR/.zcompdump.zwc" -o ! -e "$ZDORDIR/.zcompdump.zwc" ]; then
-	zcompile "$ZDORDIR/.zcompdump"
-fi
