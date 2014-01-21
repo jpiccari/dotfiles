@@ -120,6 +120,6 @@ open_url() {
 
 
 # Compile zcompdump and keep it up-to-date
-if  [ "$HOME/.zcompdump" -nt "$HOME/.zcompdump.zwc" -o ! -e "$HOME/.zcompdump.zwc" ]; then
-	zcompile "$HOME/.zcompdump"
+if  [ "$ZDORDIR/.zcompdump" -nt "$ZDORDIR/.zcompdump.zwc" -o ! -e "$ZDORDIR/.zcompdump.zwc" ]; then
+	zcompile "$ZDORDIR/.zcompdump"
 fi
