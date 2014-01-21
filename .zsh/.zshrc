@@ -1,10 +1,10 @@
 # Auto-load anything we need later
 autoload -Uz vcs_info
 source ~/.zsh/batt_status		# Battery status function
+source ~/.zsh/compsys			# Awesome completion rules
+source ~/.zsh/historySubstr		# fish-style history search
 source ~/.zsh/spectrum			# 256-bit color codes
 source ~/.zsh/syntaxHighlight	# command syntax highlighting
-source ~/.zsh/historySubstr		# fish-style history search
-source ~/.zsh/compsys			# Awesome completion rules
 source ~/.zsh/TerminalCWD		# Help Terminal.app remember CWD
 
 
