@@ -64,7 +64,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 		hook_com[staged]="⚡ "
 	fi
 }
-function +vi-git-st() {
++vi-git-st() {
 	local sep ahead behind
 	local -a gitstatus
 
