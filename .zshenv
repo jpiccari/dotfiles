@@ -1,8 +1,9 @@
-EDITOR='subl -w'
-VISUAL=less
-PAGER=$VISUAL
-BLOCKSIZE=K
+export EDITOR='subl -w'
+export VISUAL=less
+export PAGER=$VISUAL
+export BLOCKSIZE=K
 
-PATH="$HOME/bin:$PATH:/Developer/usr/bin:/Developer/user/sbin"
+export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
-DISPLAY=:0.0
+export DISPLAY=:0.0
+
