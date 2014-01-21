@@ -1,5 +1,6 @@
 # Auto-load anything we need later
 autoload -Uz vcs_info
+source ~/.zsh/batt_status		# Battery status function
 source ~/.zsh/spectrum			# 256-bit color codes
 source ~/.zsh/syntaxHighlight	# command syntax highlighting
 source ~/.zsh/historySubstr		# fish-style history search
@@ -106,7 +107,7 @@ precmd() {
 	fi
 
 	PS1+="%{$ZSH_PROMPT_COLOR_MAIN%} %(0?..%{${ZSH_PROMPT_COLOR_NO_SUCCESS}%})%(!.#.%%)%{${reset_color}$FX[reset]%} "
-	RPS1+="%n@%m$(~/.zsh/batt_status.py)%{${reset_color}$FX[reset]%}"
+	RPS1+="%n@%m$(get_battery_status)%{${reset_color}$FX[reset]%}"
 }
 
 

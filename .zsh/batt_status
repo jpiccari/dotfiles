@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+get_battery_status() {
+	batt_stats=($(ioreg -rc AppleSmartBattery | grep -E "MaxCapacity|CurrentCapacity" | awk '{ print $3; }'))
+	batt_status=$(echo "scale=1; 100 * ${batt_stats[2]} / ${batt_stats[1]}" | bc)
+	color="$FG[010]"
+
+	if [[ batt_status -le 85 ]]; then
+		if [[ batt_status -le 35 ]]; then
+			color="$FG[009]"
+		fi
+		if [[ batt_status -le 65 ]]; then
+			color="$FG[011]"
+		fi
+
+		echo " %{${color}%}${batt_status}%%%{${reset_color}%}"
+	fi
+}
