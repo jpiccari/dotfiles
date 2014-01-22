@@ -22,9 +22,9 @@ bindkey -s '^O' '^qedit \eg\n'
 
 
 # History variables
-HISTSIZE=5000					# history entries saved in memory
-SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
-HISTFILE=~/.history				# history file path
+export HISTSIZE=5000					# history entries saved in memory
+export SAVEHIST=$HISTSIZE				# history entires saved in $HISTFILE
+export HISTFILE="${HOME}/.history"		# history file path
 
 
 # ZSH Syntax Highlighters
