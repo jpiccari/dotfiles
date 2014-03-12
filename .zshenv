@@ -8,3 +8,8 @@ export BLOCKSIZE=K
 
 export DISPLAY=:0.0
 
+local proxyFile="${ZDOTDIR}/proxyServer"
+
+if [[ -a $proxyFile ]]; then
+	source $proxyFile
+fi
