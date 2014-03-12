@@ -74,7 +74,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 
 	behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d " ")
 	(( $behind )) && gitstatus+=( "%{${ZSH_PROMPT_COLOR_GIT_BEHIND}%}↓${behind}" )
-	
+
 	if [[ ${#gitstatus[@]} -ne 0 ]]; then
 		if [[ ${#gitstatus[@]} -gt 1 ]]; then
 			sep="%{$ZSH_PROMPT_COLOR_GIT_SEP%}|${gitstatus[2]}"
@@ -113,8 +113,17 @@ precmd() {
 
 # Aliases
 alias _='sudo'
+alias toggle_icons='toggle_icons'
 alias edit='subl'											# edit [file] opens file in ST2
 alias -s {com,net,org}='open_url'							# opens link with default browser
+
+
+toggle_icons() {
+	toggle=$(test `defaults read com.apple.finder CreateDesktop` -ne 1 && echo 'true' || echo 'false')
+	defaults write com.apple.finder CreateDesktop -bool ${toggle}
+	killall Finder
+}
+
 open_url() {
 	open "http://$@"
 }
