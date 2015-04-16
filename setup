@@ -1,0 +1,40 @@
+#!/bin/sh
+
+CONFIG_DIR=$(pwd)/config
+
+filelist=()
+for file in $(ls -a $CONFIG_DIR)
+do
+	if [ -f "$CONFIG_DIR/$file" ]; then
+		filelist[${#filelist[@]}]=$file
+	fi
+done
+
+
+show_help() {
+	echo "Commands:"
+	echo "\t install - Installs symlinks to config"
+	echo "\t clean - Removes symlinks to config"
+}
+
+install() {
+	for file in ${filelist[@]}
+	do
+		echo "[INSTALL]: Adding $file to $HOME"
+		ln -s $CONFIG_DIR/$file $HOME 2> /dev/null
+	done
+}
+
+clean() {
+	for file in ${filelist[@]}
+	do
+		echo "[CLEAN]: Removing config $file from $HOME"
+		rm $HOME/$file 2> /dev/null
+	done
+}
+
+if [ `type -t $1`"" = "function" ]; then
+	$1
+else
+	show_help
+fi

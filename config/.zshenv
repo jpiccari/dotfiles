@@ -1,4 +1,4 @@
-export ZDOTDIR="$HOME/.zsh"
+export ZDOTDIR="$(dirname $(readlink $HOME/.zshenv))/zsh"
 export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
 export EDITOR=nano
@@ -8,7 +8,7 @@ export BLOCKSIZE=K
 
 export DISPLAY=:0.0
 
-local proxyFile="${ZDOTDIR}/proxyServer"
+local proxyFile="$ZDOTDIR/proxyServer"
 
 if [[ -a $proxyFile ]]; then
 	source $proxyFile
