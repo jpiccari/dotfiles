@@ -23,6 +23,16 @@ install() {
 		echo "[INSTALL]: Adding $file to $HOME"
 		ln -s $CONFIG_DIR/$file $HOME 2> /dev/null
 	done
+
+	echo "[INSTALL]: Adding Sublime Text 3 user settings"
+	mkdir -p $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	cd $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages
+
+	if [ -d "User" ]; then
+		mv User User.backup
+	fi
+
+	ln -s $CONFIG_DIR/sublime User
 }
 
 clean() {
@@ -31,6 +41,17 @@ clean() {
 		echo "[CLEAN]: Removing config $file from $HOME"
 		rm $HOME/$file 2> /dev/null
 	done
+
+
+	cd $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	if [ -L "User" ]; then
+		echo "[CLEAN]: Restoring Sublime Text 3 user settings"
+		rm User
+
+		if [ -d "User.backup" ]; then
+			mv User.backup User
+		fi
+	fi
 }
 
 if [ `type -t $1`"" = "function" ]; then

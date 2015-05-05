@@ -1,0 +1,20 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Babel",
+		"LESS",
+		"Numix Theme",
+		"Oceanic Next Color Scheme",
+		"OmniSharp",
+		"Package Control",
+		"Razor",
+		"SublimeLinter",
+		"SublimeLinter-annotations",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-jshint",
+		"X86 and X86_64 assembly"
+	]
+}

@@ -1,0 +1,50 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_find_in_selection": true,
+	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
+	"draw_white_space": "selection",
+	"find_selected_text": true,
+	"font_size": 14,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"LaTeX",
+		"Java",
+		"R",
+		"Lua",
+		"Pascal",
+		"OmniSharp",
+		"Scala",
+		"Lisp",
+		"OCaml",
+		"Textile",
+		"Go",
+		"Erlang",
+		"ActionScript",
+		"TCL",
+		"PHP",
+		"Groovy",
+		"Vintage",
+		"Haskell",
+		"Clojure",
+		"Rails",
+		"Matlab",
+		"Graphviz",
+		"Perl",
+		"SQL",
+		"YAML",
+		"RestructuredText"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"rulers":
+	[
+		80,
+		120
+	],
+	"scroll_past_end": true,
+	"theme": "Numix.sublime-theme"
+}
