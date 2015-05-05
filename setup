@@ -33,6 +33,7 @@ install() {
 	fi
 
 	ln -s $CONFIG_DIR/sublime User
+	cd -
 }
 
 clean() {
@@ -52,6 +53,12 @@ clean() {
 			mv User.backup User
 		fi
 	fi
+	cd -
+}
+
+update() {
+	echo "[UPDATE]: Upgrading to latest settings"
+	clean &> /dev/null && git reset origin/master &> /dev/null && install &> /dev/null
 }
 
 if [ `type -t $1`"" = "function" ]; then
