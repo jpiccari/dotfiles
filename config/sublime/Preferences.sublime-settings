@@ -1,8 +1,21 @@
 {
+	"added_words":
+	[
+		"Piccari",
+		"param"
+	],
 	"always_show_minimap_viewport": true,
+	"auto_complete_commit_on_tab": true,
+	"auto_complete_cycle": true,
 	"auto_find_in_selection": true,
+	"close_windows_when_empty": true,
 	"color_scheme": "Packages/User/SublimeLinter/Oceanic Next (SL).tmTheme",
+	"copy_with_empty_selection": false,
+	"default_line_ending": "unix",
+	"drag_text": false,
+	"draw_centered": false,
 	"draw_white_space": "selection",
+	"enable_telemetry": "disabled",
 	"find_selected_text": true,
 	"font_size": 14,
 	"highlight_line": true,
@@ -35,6 +48,10 @@
 		"YAML",
 		"RestructuredText"
 	],
+	"ignored_words":
+	[
+		"http"
+	],
 	"indent_guide_options":
 	[
 		"draw_normal",
@@ -46,5 +63,11 @@
 		120
 	],
 	"scroll_past_end": true,
-	"theme": "Numix.sublime-theme"
+	"show_line_endings": true,
+	"spell_check": true,
+	"spelling_selector": "markup.raw, source meta.preprocessor.c.include, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)",
+	"theme": "Numix.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false,
+	"wrap_width": 80
 }
