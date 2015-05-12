@@ -5,7 +5,7 @@
 		"param"
 	],
 	"always_show_minimap_viewport": true,
-	"auto_complete_commit_on_tab": true,
+	"auto_complete_commit_on_tab": false,
 	"auto_complete_cycle": true,
 	"auto_find_in_selection": true,
 	"close_windows_when_empty": true,
@@ -67,7 +67,7 @@
 	"spell_check": true,
 	"spelling_selector": "markup.raw, source meta.preprocessor.c.include, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)",
 	"theme": "Numix.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
+	"trim_trailing_white_space_on_save": false,
 	"word_wrap": false,
 	"wrap_width": 80
 }
