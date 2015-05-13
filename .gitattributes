@@ -1,0 +1,2 @@
+# Ensure no user info ends up in the repo
+config/git-config	filter=git_user_info

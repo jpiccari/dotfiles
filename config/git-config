@@ -24,7 +24,7 @@
 	prune = true
 
 [help]
-	autocorrect = 10
+	autocorrect = 25
 
 [gui]
 	diffcontext = 7
@@ -46,3 +46,8 @@
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 	prompt = false
+
+
+# Strip user configs from git file
+[filter "git_user_info"]
+	clean = "sed -E -e '/^\\[user\\]/,/^\\[/{/^$|^\\[user\\]|^[^\\[]/d;}'"
