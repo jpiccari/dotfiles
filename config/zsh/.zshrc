@@ -3,20 +3,20 @@ SCRIPTDIR=$ZDOTDIR/scripts
 # Auto-load anything we need later
 autoload -Uz vcs_info
 source $SCRIPTDIR/batt_status		# Battery status function
-source $SCRIPTDIR/compsys		# Awesome completion rules
+source $SCRIPTDIR/compsys			# Awesome completion rules
 source $SCRIPTDIR/historySubstr		# fish-style history search
-source $SCRIPTDIR/spectrum		# 256-bit color codes
+source $SCRIPTDIR/spectrum			# 256-bit color codes
 source $SCRIPTDIR/syntaxHighlight	# command syntax highlighting
 source $SCRIPTDIR/TerminalCWD		# Help Terminal.app remember CWD
 
 
 # Set our options
-setopt auto_cd				# cd when just a path is entered
-setopt extended_glob			# extra fancy globbing
-setopt append_history			# append the history file instead of replacing it
-setopt hist_ignore_all_dups		# don't store duplicate entires in history
+setopt auto_cd						# cd when just a path is entered
+setopt extended_glob				# extra fancy globbing
+setopt append_history				# append the history file instead of replacing it
+setopt hist_ignore_all_dups			# don't store duplicate entires in history
 setopt hist_expire_dups_first		# expire duplicate entries in history first
-setopt hist_no_store			# don't store history lookups in history
+setopt hist_no_store				# don't store history lookups in history
 
 
 # Key bindings
@@ -24,8 +24,8 @@ bindkey -s '^O' '^qedit \eg\n'
 
 
 # History variables
-export HISTSIZE=5000			# history entries saved in memory
-export SAVEHIST=$HISTSIZE		# history entires saved in $HISTFILE
+export HISTSIZE=5000				# history entries saved in memory
+export SAVEHIST=$HISTSIZE			# history entires saved in $HISTFILE
 export HISTFILE="${HOME}/.history"	# history file path
 
 
