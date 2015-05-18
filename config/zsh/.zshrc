@@ -38,6 +38,10 @@ export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
 
 
+# less options
+export LESS="--tabs=4 --ignore-case -FRSX"
+
+
 # Prompt colors
 ZSH_PROMPT_BOLD=true
 ZSH_PROMPT_COLOR_MAIN="$FG[032]"
