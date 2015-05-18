@@ -2,6 +2,7 @@ SCRIPTDIR=$ZDOTDIR/scripts
 
 # Auto-load anything we need later
 autoload -Uz vcs_info
+source $SCRIPTDIR/functions			# Custom functions
 source $SCRIPTDIR/batt_status		# Battery status function
 source $SCRIPTDIR/compsys			# Awesome completion rules
 source $SCRIPTDIR/historySubstr		# fish-style history search
@@ -118,18 +119,5 @@ precmd() {
 
 
 # Aliases
-alias _='sudo'
-alias toggle_icons='toggle_icons'
-alias edit='subl'											# edit [file] opens file in ST2
-alias -s {com,net,org}='open_url'							# opens link with default browser
-
-
-toggle_icons() {
-	toggle=$(test `defaults read com.apple.finder CreateDesktop` -ne 1 && echo 'true' || echo 'false')
-	defaults write com.apple.finder CreateDesktop -bool ${toggle}
-	killall Finder
-}
-
-open_url() {
-	open "http://$@"
-}
+# opens link with default browser
+alias -s {com,net,org}='open_url'
