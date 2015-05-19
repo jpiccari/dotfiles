@@ -1,9 +1,19 @@
 toggle_icons() {
-	toggle=$(test `defaults read com.apple.finder CreateDesktop` -ne 1 && echo 'true' || echo 'false')
+	toggle=$([ `defaults read com.apple.finder CreateDesktop` -ne 1 ] && echo 'true' || echo 'false')
 	defaults write com.apple.finder CreateDesktop -bool ${toggle}
 	killall Finder
 }
 
-open_url() {
-	open "http://$@"
+
+is_url() {
+	echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*?)+?\.(com|net|org|io|us|uk|info)(/[^/]*)*$"
+	return $?
+}
+
+normalize_url() {
+	url=$*
+	if [[ $url != http://* ]] && [[ $url != https://* ]]; then
+		url="http://${url}"
+	fi
+	echo $url
 }

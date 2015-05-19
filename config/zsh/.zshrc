@@ -118,6 +118,31 @@ precmd() {
 }
 
 
-# Aliases
-# opens link with default browser
-alias -s {com,net,org}='open_url'
+# ZSH handler for when a command is not found
+command_not_found_handler() {
+	local url tpgid
+
+	# do not run when inside Midnight Commander or within a Pipe
+	if [ -n "$MC_SID" -o ! -t 1 ]; then
+        return 127
+    fi
+
+
+    # do not run when within a sub-shell
+	ps o tpgid | sed -n 2p | read tpgid
+	if [ $$ -eq $tpgid ]; then
+        return 127
+	fi
+
+
+	# open url if its not a command
+	url=$(normalize_url $*)
+	if is_url $url; then
+		open $url
+		return 0;
+	fi
+
+	
+	# Standard error message
+    return 127
+}
