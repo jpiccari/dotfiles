@@ -58,8 +58,8 @@ ZSH_PROMPT_COLOR_NO_SUCCESS="$FG[200]"
 zstyle ':vcs_info:*' enable git #svn
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr '+'
-zstyle ':vcs_info:git:*' unstagedstr 'º'
-zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%u%c%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
+zstyle ':vcs_info:git:*' unstagedstr '⚡ '
+zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%c%u%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 +vi-git-untracked(){
 	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
@@ -68,7 +68,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 		# If instead you want to show the marker only if there are untracked
 		# files in $PWD, use:
 		#[[ -n $(git ls-files --others --exclude-standard) ]] ; then
-		hook_com[staged]="⚡ "
+		hook_com[unstaged]+="🍺 "
 	fi
 }
 +vi-git-st() {
