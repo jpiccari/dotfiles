@@ -24,7 +24,7 @@ toggle_icons() {
 
 
 is_url() {
-	echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*?)+?\.(com|net|org|io|us|uk|info)(/[^/]*)*$"
+	echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*)+\.[a-zA-Z][a-zA-Z0-9\-]*(/[^/]*)*$"
 	return $?
 }
 
