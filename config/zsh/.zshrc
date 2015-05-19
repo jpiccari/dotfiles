@@ -3,7 +3,6 @@ SCRIPTDIR=$ZDOTDIR/scripts
 # Auto-load anything we need later
 autoload -Uz vcs_info
 source $SCRIPTDIR/functions			# Custom functions
-source $SCRIPTDIR/batt_status		# Battery status function
 source $SCRIPTDIR/compsys			# Awesome completion rules
 source $SCRIPTDIR/historySubstr		# fish-style history search
 source $SCRIPTDIR/spectrum			# 256-bit color codes

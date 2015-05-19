@@ -1,3 +1,21 @@
+get_battery_status() {
+	batt_stats=($(ioreg -rc AppleSmartBattery | grep -E "DesignCapacity|CurrentCapacity" | awk '{ print $3; }'))
+	batt_status=$(echo "scale=1; 100 * ${batt_stats[1]} / ${batt_stats[2]}" | bc)
+	color="$FG[010]"
+
+	if [[ batt_status -le 85 ]]; then
+		if [[ batt_status -le 35 ]]; then
+			color="$FG[009]"
+		fi
+		if [[ batt_status -le 65 ]]; then
+			color="$FG[011]"
+		fi
+
+		echo " %{${color}%}${batt_status}%%%{${reset_color}%}"
+	fi
+}
+
+
 toggle_icons() {
 	toggle=$([ `defaults read com.apple.finder CreateDesktop` -ne 1 ] && echo 'true' || echo 'false')
 	defaults write com.apple.finder CreateDesktop -bool ${toggle}
@@ -9,6 +27,7 @@ is_url() {
 	echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*?)+?\.(com|net|org|io|us|uk|info)(/[^/]*)*$"
 	return $?
 }
+
 
 normalize_url() {
 	url=$*
