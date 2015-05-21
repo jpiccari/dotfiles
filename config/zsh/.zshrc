@@ -112,8 +112,22 @@ precmd() {
 		RPS1+="%{$ZSH_PROMPT_COLOR_MAIN_RIGHT%}"
 	fi
 
+	battery_status=$(get_battery_status 1)
+	if [[ battery_status -le 75 ]]; then
+		if [[ battery_status -gt 50 ]]; then
+			color="$FG[010]"
+		elif [[ battery_status -gt 25 ]]; then
+			color="$FG[011]"
+		else
+			color="$FG[009]"
+		fi
+
+		battery_status=" %{${color}%}${battery_status}%%%{${reset_color}%}"
+	fi
+
+
 	PS1+="%{$ZSH_PROMPT_COLOR_MAIN%} %(0?..%{${ZSH_PROMPT_COLOR_NO_SUCCESS}%})%(!.#.%%)%{${reset_color}$FX[reset]%} "
-	RPS1+="%n@%m$(get_battery_status)%{${reset_color}$FX[reset]%}"
+	RPS1+="%n@%m${battery_status}%{${reset_color}$FX[reset]%}"
 }
 
 

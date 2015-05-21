@@ -1,18 +1,9 @@
 get_battery_status() {
+	decimals=${1:-0}
 	batt_stats=($(ioreg -rc AppleSmartBattery | grep -i -E '^\s*"\w+capacity"' | awk '{ print $3; }'))
 	max_capacity=$([ $batt_stats[1] -le $batt_stats[3] ] && echo $batt_stats[1] || echo $batt_stats[3])
-	batt_status=$(echo "scale=1; 100 * ${batt_stats[2]} / ${max_capacity}" | bc)
-	color="$FG[010]"
 
-	if [[ batt_status -le 75 ]]; then
-		if [[ batt_status -le 25 ]]; then
-			color="$FG[009]"
-		elif [[ batt_status -le 50 ]]; then
-			color="$FG[011]"
-		fi
-
-		echo " %{${color}%}${batt_status}%%%{${reset_color}%}"
-	fi
+	echo "scale=${decimals}; 100 * ${batt_stats[2]} / ${max_capacity}" | bc
 }
 
 
