@@ -2,6 +2,8 @@ SCRIPTDIR=$ZDOTDIR/scripts
 
 # Auto-load anything we need later
 autoload -Uz vcs_info
+
+# Include other sources
 source $SCRIPTDIR/functions			# Custom functions
 source $SCRIPTDIR/compsys			# Awesome completion rules
 source $SCRIPTDIR/historySubstr		# fish-style history search
@@ -26,7 +28,7 @@ bindkey -s '^O' '^qedit \eg\n'
 # History variables
 export HISTSIZE=5000				# history entries saved in memory
 export SAVEHIST=$HISTSIZE			# history entires saved in $HISTFILE
-export HISTFILE="${HOME}/.history"	# history file path
+export HISTFILE="$HOME/.history"	# history file path
 
 
 # ZSH Syntax Highlighters
