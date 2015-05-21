@@ -9,8 +9,7 @@ get_battery_status() {
 
 toggle_icons() {
 	toggle=$([ `defaults read com.apple.finder CreateDesktop` -ne 1 ] && echo 'true' || echo 'false')
-	defaults write com.apple.finder CreateDesktop -bool ${toggle}
-	killall Finder
+	defaults write com.apple.finder CreateDesktop -bool ${toggle} && killall Finder
 }
 
 
