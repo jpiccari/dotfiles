@@ -70,17 +70,17 @@ precmd() {
 		RPS1+="%{$ZSH_PROMPT_COLOR_MAIN_RIGHT%}"
 	fi
 
-	local battery_status=$(get_battery_status 1)
-	if [[ battery_status -le 75 ]]; then
-		if [[ battery_status -gt 50 ]]; then
+	local battery_charge=$(get_battery_status 1)
+	if [[ battery_charge -le 75 ]]; then
+		if [[ battery_charge -gt 50 ]]; then
 			color="$FG[010]"
-		elif [[ battery_status -gt 25 ]]; then
+		elif [[ battery_charge -gt 25 ]]; then
 			color="$FG[011]"
 		else
 			color="$FG[009]"
 		fi
 
-		battery_status=" %{${color}%}${battery_status}%%%{${reset_color}%}"
+		local battery_status=" %{${color}%}${battery_charge}%%%{${reset_color}%}"
 	fi
 
 
