@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 get_battery_status() {
 	decimals=${1:-0}
 	batt_stats=($(ioreg -rc AppleSmartBattery | grep -i -E '^\s*"\w+capacity"' | awk '{ print $3; }'))
