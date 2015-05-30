@@ -1,11 +1,12 @@
 #!/bin/sh
 
 CONFIG_DIR=$(pwd)/config
+GIT_CONFIG_FILE=".gitconfig"
 
 filelist=()
 for file in $(ls -a $CONFIG_DIR)
 do
-	if [ -f "$CONFIG_DIR/$file" ] && [ "$file" != "git-config" ]; then
+	if [ -f "$CONFIG_DIR/$file" ] && [ "$file" != "$GIT_CONFIG_FILE" ]; then
 		filelist[${#filelist[@]}]=$file
 	fi
 done
@@ -24,7 +25,7 @@ install() {
 		ln -s $CONFIG_DIR/$file $HOME 2> /dev/null
 	done
 
-	git config --global include.path "$CONFIG_DIR/git-config"
+	git config --global include.path "$CONFIG_DIR/$GIT_CONFIG_FILE"
 
 	echo "[INSTALL]: Adding Sublime Text 3 user settings"
 	mkdir -p $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages
