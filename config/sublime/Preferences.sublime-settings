@@ -16,6 +16,7 @@
 	"draw_centered": false,
 	"draw_white_space": "selection",
 	"enable_telemetry": "disabled",
+	"ensure_newline_at_eof_on_save": true,
 	"find_selected_text": true,
 	"font_size": 14,
 	"highlight_line": true,
@@ -68,7 +69,7 @@
 	"spell_check": true,
 	"spelling_selector": "markup.raw, source meta.preprocessor.c.include, source comment - source comment.block.preprocessor, -(source, constant, keyword, storage, support, variable, markup.underline.link, meta.tag)",
 	"theme": "Numix.sublime-theme",
-	"trim_trailing_white_space_on_save": false,
+	"trim_trailing_white_space_on_save": true,
 	"word_wrap": false,
 	"wrap_width": 80
 }
