@@ -6,13 +6,13 @@ SCRIPTDIR=$ZDOTDIR/scripts
 autoload -Uz vcs_info
 
 # Include other sources
-source $SCRIPTDIR/spectrum			# 256-bit color codes
-source $SCRIPTDIR/functions			# Custom functions
-source $SCRIPTDIR/commandPrompt		# Command prompt settings
-source $SCRIPTDIR/TerminalCWD		# Help Terminal.app remember CWD
-source $SCRIPTDIR/historySubstr		# fish-style history search
-source $SCRIPTDIR/compsys			# Awesome completion rules
-source $SCRIPTDIR/syntaxHighlight	# command syntax highlighting
+source "$SCRIPTDIR/spectrum"		# 256-bit color codes
+source "$SCRIPTDIR/functions"		# Custom functions
+source "$SCRIPTDIR/commandPrompt"	# Command prompt settings
+source "$SCRIPTDIR/TerminalCWD"		# Help Terminal.app remember CWD
+source "$SCRIPTDIR/historySubstr"	# fish-style history search
+source "$SCRIPTDIR/compsys"			# Awesome completion rules
+source "$SCRIPTDIR/syntaxHighlight"	# command syntax highlighting
 
 
 # Set our options
@@ -30,7 +30,7 @@ bindkey -s '^O' '^qsubl \eg\n'
 
 # History variables
 export HISTSIZE=5000				# history entries saved in memory
-export SAVEHIST=$HISTSIZE			# history entires saved in $HISTFILE
+export SAVEHIST="$HISTSIZE"			# history entires saved in $HISTFILE
 export HISTFILE="$HOME/.history"	# history file path
 
 
@@ -76,7 +76,7 @@ command_not_found_handler() {
 		return 0;
 	fi
 
-	
-	# Standard error message
+
+    # Standard error message
     return 127
 }
