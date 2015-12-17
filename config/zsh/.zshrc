@@ -47,6 +47,10 @@ export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
 export LESS="--tabs=4 --ignore-case -FRSX"
 
 
+# Add ssh keys
+eval $(ssh-agent -s) > /dev/null
+ssh-add $(find -E "$HOME/.ssh" -iregex '.*_[dr]sa') >& /dev/null
+
 
 # ZSH handler for when a command is not found
 command_not_found_handler() {
