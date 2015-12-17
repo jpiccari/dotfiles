@@ -1,5 +1,4 @@
 export ZDOTDIR="$(dirname $(readlink $HOME/.zshenv))/zsh"
-export PATH="$HOME/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
 export PAGER=less
 export EDITOR=nano
