@@ -27,7 +27,6 @@
 		"ASP",
 		"Clojure",
 		"Erlang",
-		"Go",
 		"Graphviz",
 		"Groovy",
 		"Haskell",
@@ -47,8 +46,7 @@
 		"SQL",
 		"TCL",
 		"Textile",
-		"Vintage",
-		"YAML"
+		"Vintage"
 	],
 	"ignored_words":
 	[

@@ -6,16 +6,19 @@
 	[
 		"AAAPackageDev",
 		"Babel",
+		"Dockerfile Syntax Highlighting",
+		"Handlebars",
 		"LESS",
 		"Numix Theme",
 		"Oceanic Next Color Scheme",
 		"OmniSharp",
 		"Package Control",
 		"Razor",
+		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-jshint",
-		"X86 and X86_64 assembly"
+		"x86 and x86_64 Assembly"
 	]
 }
