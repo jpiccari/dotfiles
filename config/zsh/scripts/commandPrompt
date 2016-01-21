@@ -72,9 +72,9 @@ precmd() {
 
 	local battery_charge=$(get_battery_status 1)
 	if [[ battery_charge -le 75 ]]; then
-		if [[ battery_charge -gt 50 ]]; then
+		if [[ battery_charge -gt 35 ]]; then
 			color="$FG[010]"
-		elif [[ battery_charge -gt 25 ]]; then
+		elif [[ battery_charge -gt 15 ]]; then
 			color="$FG[011]"
 		else
 			color="$FG[009]"
