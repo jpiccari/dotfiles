@@ -30,7 +30,7 @@ bindkey -s '^O' '^qsubl \eg\n'
 
 # History variables
 export HISTSIZE=5000				# history entries saved in memory
-export SAVEHIST="$HISTSIZE"			# history entires saved in $HISTFILE
+export SAVEHIST=25000   			# history entires saved in $HISTFILE
 export HISTFILE="$HOME/.history"	# history file path
 
 
