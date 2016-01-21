@@ -13,12 +13,15 @@
 		"Oceanic Next Color Scheme",
 		"OmniSharp",
 		"Package Control",
+		"Pretty JSON",
 		"Razor",
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-jshint",
+		"Terraform",
+		"TypeScript",
 		"x86 and x86_64 Assembly"
 	]
 }
