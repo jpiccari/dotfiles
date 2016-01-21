@@ -47,9 +47,33 @@ export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
 export LESS="--tabs=4 --ignore-case -FRSX"
 
 
-# Add ssh keys
+# Start ssh-agent and add ssh keys
 eval $(ssh-agent -s) > /dev/null
 ssh-add $(find -E "$HOME/.ssh" -iregex '.*_[dr]sa') >& /dev/null
+
+
+# If docker-machine exists, setup the proper env
+command -v docker-machine >& /dev/null
+if [ $? -eq 0 ]; then
+    # Get the first docker vm as a fallback
+    local docker_vm=$(docker-machine ls -q | head -1)
+
+    # If a "default" vm exists, use it instead
+    if $(docker-machine ls -q | grep -q default); then
+        # Set docker_vm to first docker vm name
+        docker_vm="default"
+    fi
+
+    if [ -n "$docker_vm" ]; then
+        if [ $(docker-machine status "$docker_vm") != "Running" ]; then
+            echo "Starting docker vm \"$docker_vm\""
+            docker-machine start "$docker_vm" >& /dev/null
+            sleep 5
+        fi
+
+         eval $(docker-machine env "$docker_vm")
+     fi
+fi
 
 
 # ZSH handler for when a command is not found
