@@ -20,8 +20,8 @@ zstyle ':vcs_info:git:*' unstagedstr '⚡ '
 zstyle ':vcs_info:git*' formats "%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}(%b%{${ZSH_PROMPT_COLOR_GIT_UNTRACKED}%}%c%u%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}%m)"
 zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 +vi-git-untracked(){
-	if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-		git status --porcelain | grep '??' &> /dev/null ; then
+	if [ $(git rev-parse --is-inside-work-tree 2> /dev/null) = 'true' ] && \
+		git status --porcelain | grep -q '??' &> /dev/null ; then
 		# This will show the marker if there are any untracked files in repo.
 		# If instead you want to show the marker only if there are untracked
 		# files in $PWD, use:
@@ -39,8 +39,8 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st git-untracked
 	behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d " ")
 	(( $behind )) && gitstatus+=( "%{${ZSH_PROMPT_COLOR_GIT_BEHIND}%}↓${behind}" )
 
-	if [[ ${#gitstatus[@]} -ne 0 ]]; then
-		if [[ ${#gitstatus[@]} -gt 1 ]]; then
+	if [ ${#gitstatus[@]} -ne 0 ]; then
+		if [ ${#gitstatus[@]} -gt 1 ]; then
 			sep="%{$ZSH_PROMPT_COLOR_GIT_SEP%}|${gitstatus[2]}"
 		fi
 		hook_com[misc]=" ${gitstatus[1]}${sep}%{${ZSH_PROMPT_COLOR_GIT_MAIN}%}"
@@ -58,23 +58,23 @@ precmd() {
 		PS1+="%{$FX[bold]%}"
 		RPS1+="%{$FX[bold]%}"
 	fi
-	if [[ -n ${vcs_info_msg_0_} ]]; then
+	if [ -n "${vcs_info_msg_0_}" ]; then
 		PS1+="%3~ ${vcs_info_msg_0_}"
 	else
 		PS1+="%5~"
 	fi
 
-	if [[ $UID -eq 0 ]]; then
+	if [ $UID -eq 0 ]; then
 		RPS1+="%{$FG[160]%}"
 	else
 		RPS1+="%{$ZSH_PROMPT_COLOR_MAIN_RIGHT%}"
 	fi
 
-	local battery_charge=$(get_battery_status 1)
-	if [[ battery_charge -le 75 ]]; then
-		if [[ battery_charge -gt 35 ]]; then
+	local battery_charge=$(get_battery_status)
+	if [ $battery_charge -le 75 ]; then
+		if [ $battery_charge -gt 40 ]; then
 			color="$FG[010]"
-		elif [[ battery_charge -gt 15 ]]; then
+		elif [ $battery_charge -gt 15 ]; then
 			color="$FG[011]"
 		else
 			color="$FG[009]"

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-SCRIPTDIR=$ZDOTDIR/scripts
+SCRIPTDIR="$ZDOTDIR/scripts"
 
 # Auto-load anything we need later
 autoload -Uz vcs_info
