@@ -1,12 +1,10 @@
-# Flush sudo timeout
-sudo -k
+# If this is the last open terminal, clear all the sekrets
+if [ $(ps a | tail -n+2 | awk '{ print $2}' | uniq | wc -l) -le 2 ]; then
+    # Flush sudo timeout
+    sudo -k
 
-# Flush ssh keys
-echo $(( $(cat "$SSH_AGENT_REF") - 1 )) > "$SSH_AGENT_REF"
-
-if [ $(cat "$SSH_AGENT_REF") -le 0 ]; then
+    # Flush ssh keys
     ssh-add -D
-    rm "$SSH_AGENT_REF"
 
     if [ -f "$SSH_AGENT_ENV" ]; then
         eval $(ssh-agent -s -k)

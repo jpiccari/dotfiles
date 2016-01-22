@@ -48,8 +48,7 @@ export LESS="--tabs=4 --ignore-case -FRSX"
 
 
 # Start ssh-agent and add ssh keys
-export SSH_AGENT_REF="$HOME/.ssh/agent.ref"
-export SSH_AGENT_ENV="$HOME/.ssh/agent.env"
+SSH_AGENT_ENV="$HOME/.ssh/agent.env"
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
     if [ ! -f "$SSH_AGENT_ENV" ]; then
@@ -59,8 +58,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     source "$SSH_AGENT_ENV" >& /dev/null
 fi
 
-# Bump ref count on agent and add keys
-echo $(( $(cat "$SSH_AGENT_REF") + 1 )) > "$SSH_AGENT_REF"
+# Load ssh keys
 ssh-add $(find -E "$HOME/.ssh" -iregex '.*_[dr]sa') >& /dev/null
 
 
