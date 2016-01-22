@@ -6,10 +6,3 @@ export VISUAL=$EDITOR
 export BLOCKSIZE=K
 
 export DISPLAY=:0.0
-
-
-local proxyFile="$ZDOTDIR/proxyServer"
-
-if [ -f "$proxyFile" ]; then
-	source "$proxyFile"
-fi
