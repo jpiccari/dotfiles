@@ -68,14 +68,12 @@ if command -v rbenv >& /dev/null; then
 fi
 
 # If docker-machine exists, setup the proper env
-command -v docker-machine >& /dev/null
-if [ $? -eq 0 ]; then
+if command -v docker-machine >& /dev/null; then
     # Get the first docker vm as a fallback
     local docker_vm=$(docker-machine ls -q | head -1)
 
     # If a "default" vm exists, use it instead
     if $(docker-machine ls -q | grep -q default); then
-        # Set docker_vm to first docker vm name
         docker_vm="default"
     fi
 
