@@ -22,6 +22,7 @@ setopt append_history				# append the history file instead of replacing it
 setopt hist_ignore_all_dups			# don't store duplicate entires in history
 setopt hist_expire_dups_first		# expire duplicate entries in history first
 setopt hist_no_store				# don't store history lookups in history
+setopt inc_append_history           # incrementally append commands to history
 
 
 # Key bindings
