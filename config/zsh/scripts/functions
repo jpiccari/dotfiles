@@ -1,32 +1,32 @@
 #!/usr/bin/env zsh
 
 get_battery_status() {
-	decimals=${1:-0}
-	batt_stats=($(ioreg -rc AppleSmartBattery | grep -i -E '^\s*"\w+capacity"' | awk '{ print $3; }'))
-	max_capacity=$([ $batt_stats[1] -le $batt_stats[3] ] && echo $batt_stats[1] || echo $batt_stats[3])
+    decimals=${1:-0}
+    batt_stats=($(ioreg -rc AppleSmartBattery | grep -i -E '^\s*"\w+capacity"' | awk '{ print $3; }'))
+    max_capacity=$([ $batt_stats[1] -le $batt_stats[3] ] && echo $batt_stats[1] || echo $batt_stats[3])
 
-	echo "scale=${decimals}; 100 * ${batt_stats[2]} / ${max_capacity}" | bc
+    echo "scale=${decimals}; 100 * ${batt_stats[2]} / ${max_capacity}" | bc
 }
 
 
 toggle_icons() {
-	toggle=$([ `defaults read com.apple.finder CreateDesktop` -ne 1 ] && echo 'true' || echo 'false')
-	defaults write com.apple.finder CreateDesktop -bool ${toggle} && killall Finder
+    toggle=$([ `defaults read com.apple.finder CreateDesktop` -ne 1 ] && echo 'true' || echo 'false')
+    defaults write com.apple.finder CreateDesktop -bool ${toggle} && killall Finder
 }
 
 
 is_url() {
-	echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*)+\.[a-zA-Z][a-zA-Z0-9\-]*(/[^/]*)*$"
-	return $?
+    echo $* | grep -q -E "^https?://(\.?[a-zA-Z][a-zA-Z0-9\-]*)+\.[a-zA-Z][a-zA-Z0-9\-]*(/[^/]*)*$"
+    return $?
 }
 
 
 normalize_url() {
-	url=$*
-	if [[ $url != http://* ]] && [[ $url != https://* ]]; then
-		url="http://${url}"
-	fi
-	echo $url
+    url=$*
+    if [[ $url != http://* ]] && [[ $url != https://* ]]; then
+        url="http://${url}"
+    fi
+    echo $url
 }
 
 short_pwd() {

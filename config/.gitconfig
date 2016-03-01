@@ -1,52 +1,52 @@
 [core]
-	eol = native
-	excludesfile = ~/.gitignore
-	filemode = true
-	ignorecase = false
+    eol = native
+    excludesfile = ~/.gitignore
+    filemode = true
+    ignorecase = false
 
 [color]
-	branch = auto
-	diff = always
-	grep = always
-	interactive = always
-	pager = true
-	showbranch = auto
-	status = auto
-	ui = auto
+    branch = auto
+    diff = always
+    grep = always
+    interactive = always
+    pager = true
+    showbranch = auto
+    status = auto
+    ui = auto
 
 [color "status"]
-	added = cyan
-	changed = magenta
-	untracked = red
+    added = cyan
+    changed = magenta
+    untracked = red
 
 [fetch]
-	prune = true
+    prune = true
 
 [help]
-	autocorrect = 25
+    autocorrect = 25
 
 [gui]
-	diffcontext = 7
+    diffcontext = 7
 
 [push]
-	default = simple
+    default = simple
 
 [status]
-	branch = true
-	short = false
-	relativepaths = false
+    branch = true
+    short = false
+    relativepaths = false
 
 
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustexitcode = true
-	prompt = false
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustexitcode = true
+    prompt = false
 
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-	prompt = false
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    prompt = false
 
 
 # Strip user configs from git file
 [filter "git_user_info"]
-	clean = "sed -E -e '/^\\[user\\]/,/^\\[/{/^$|^\\[user\\]|^[^\\[]/d;}'"
+    clean = "sed -E -e '/^\\[user\\]/,/^\\[/{/^$|^\\[user\\]|^[^\\[]/d;}'"

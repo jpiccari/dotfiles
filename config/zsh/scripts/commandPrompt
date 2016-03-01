@@ -21,13 +21,13 @@ precmd() {
         tmux refresh-client -S
     fi
 
-	PS1="%{${ZSH_PROMPT_COLOR_MAIN}%}"
+    PS1="%{${ZSH_PROMPT_COLOR_MAIN}%}"
 
-	if $ZSH_PROMPT_BOLD; then
-		PS1+="%{$FX[bold]%}"
-	fi
+    if $ZSH_PROMPT_BOLD; then
+        PS1+="%{$FX[bold]%}"
+    fi
 
-	PS1+="%3~%{$ZSH_PROMPT_COLOR_MAIN%} %(0?..%{${ZSH_PROMPT_COLOR_NO_SUCCESS}%})%(!.#.%%)%{${reset_color}$FX[reset]%} "
+    PS1+="%3~%{$ZSH_PROMPT_COLOR_MAIN%} %(0?..%{${ZSH_PROMPT_COLOR_NO_SUCCESS}%})%(!.#.%%)%{${reset_color}$FX[reset]%} "
 }
 
 preexec() {
