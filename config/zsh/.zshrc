@@ -1,9 +1,16 @@
 #!/usr/bin/env zsh
 
-SCRIPTDIR="$ZDOTDIR/scripts"
+# If we are not running in a tmux environment, start one
+if command -v tmux >& /dev/null && [ -z "$TMUX" ]; then
+    exec tmux $(tmux list-sessions >& /dev/null && echo "attach" || echo "new")
+fi
 
-# Auto-load anything we need later
-autoload -Uz vcs_info
+
+# Set emacs mode
+set -o emacs
+
+
+SCRIPTDIR="$ZDOTDIR/scripts"
 
 # Include other sources
 source "$SCRIPTDIR/spectrum"		# 256-bit color codes

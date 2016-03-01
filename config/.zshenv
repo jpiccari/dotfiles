@@ -1,4 +1,6 @@
-export ZDOTDIR="$(dirname $(readlink $HOME/.zshenv))/zsh"
+DOTDIR="$(dirname $(readlink $HOME/.zshenv))"
+export ZDOTDIR="$DOTDIR/zsh"
+export TMUXDIR="$DOTDIR/tmux"
 
 export BLOCKSIZE=K
 export PAGER=less

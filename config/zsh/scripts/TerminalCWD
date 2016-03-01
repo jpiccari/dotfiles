@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Tell the terminal about the working directory whenever it changes.
-if [ "$TERM_PROGRAM" = "Apple_Terminal" -o -z "$INSIDE_EMACS" ]; then
+if [ "$TERM_PROGRAM" = "Apple_Terminal" -a -z "$TMUX" ]; then
 
     update_terminal_cwd() {
         # Identify the directory using a "file:" scheme URL, including
@@ -23,9 +23,7 @@ if [ "$TERM_PROGRAM" = "Apple_Terminal" -o -z "$INSIDE_EMACS" ]; then
             done
         }
 
-        local PWD_URL="file://$HOST$URL_PATH"
-        #echo "$PWD_URL"        # testing
-        printf '\e]7;%s\a' "$PWD_URL"
+        printf '\e]7;%s\a' "file://$HOST$URL_PATH"
     }
 
     # Register the function so it is called whenever the working

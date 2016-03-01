@@ -28,3 +28,8 @@ normalize_url() {
 	fi
 	echo $url
 }
+
+short_pwd() {
+    local length=$((${1:-25} - 1))
+    pwd | sed -e "s|^$HOME|~|" | awk "{ if(length(\$0) <= $length) print \$0; if(length(\$0) > $length) print \"…\" substr(\$0, length(\$0)-$length+1) }"
+}

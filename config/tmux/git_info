@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# cd to the directory specified by the first argument
+cd "$1"
+
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "$2"
+    exit
+fi
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+AHEAD_COUNT=$(git rev-list ${BRANCH}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d " ")
+BEHIND_COUNT=$(git rev-list HEAD..${BRANCH}@{upstream} 2>/dev/null | wc -l | tr -d " ")
+GIT_STATUS=$(git status --porcelain)
+
+parts=()
+flags=()
+
+# Staged changes
+if echo "$GIT_STATUS" | grep -q '^[ADMR]' >& /dev/null; then
+    flags+=("🚀.")
+fi
+
+# Unstaged changes
+if echo "$GIT_STATUS" | grep -q '^.[ADMR]' >& /dev/null; then
+    flags+=("⚡.")
+fi
+
+# Untracked changes
+if echo "$GIT_STATUS" | grep -q '??' >& /dev/null; then
+    flags+=("🔥.")
+fi
+
+parts+=($(IFS=; echo "${flags[*]}"))
+parts+=($BRANCH)
+
+if [ $AHEAD_COUNT -gt 0 ]; then
+    parts+=("#[fg=colour014]↑${AHEAD_COUNT}")
+fi
+
+if [ $BEHIND_COUNT -gt 0 ]; then
+    parts+=("#[fg=colour166]↓${BEHIND_COUNT}")
+fi
+
+echo " #[fg=colour190,bold]$(IFS=\ ; echo "${parts[*]}" | tr '.' ' ') "
