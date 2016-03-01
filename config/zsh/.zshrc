@@ -26,7 +26,7 @@ setopt inc_append_history           # incrementally append commands to history
 
 
 # Key bindings
-bindkey -s '^O' '^qsubl \eg\n'
+bindkey -s '^O' '^q$VISUAL \eg\n'
 
 
 # History variables
