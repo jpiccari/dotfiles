@@ -1,9 +1,8 @@
 [core]
+	eol = native
+	excludesfile = ~/.gitignore
 	filemode = true
 	ignorecase = false
-	eol = native
-	editor = subl -w
-	excludesfile = ~/.gitignore
 
 [color]
 	branch = auto
