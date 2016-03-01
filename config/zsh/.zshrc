@@ -62,6 +62,11 @@ fi
 ssh-add $(find -E "$HOME/.ssh" -iregex '.*_[dr]sa') >& /dev/null
 
 
+# Setup ruby
+if command -v rbenv >& /dev/null; then
+    eval "$(rbenv init -)"
+fi
+
 # If docker-machine exists, setup the proper env
 command -v docker-machine >& /dev/null
 if [ $? -eq 0 ]; then
