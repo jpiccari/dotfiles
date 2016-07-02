@@ -8,9 +8,13 @@ if ! git rev-parse --git-dir > /dev/null 2>&1; then
     exit
 fi
 
+# Sleep briefly to avoid race conditions with the index.lock file when stashing
+sleep 0.1
+
+REMOTE=$(git rev-list --left-right @{u}...)
+AHEAD_COUNT=$(echo "${REMOTE}" | awk '/^>/{c++}END{print c}')
+BEHIND_COUNT=$(echo "${REMOTE}" | awk '/^</{c++}END{print c}')
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
-AHEAD_COUNT=$(git rev-list ${BRANCH}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d " ")
-BEHIND_COUNT=$(git rev-list HEAD..${BRANCH}@{upstream} 2>/dev/null | wc -l | tr -d " ")
 GIT_STATUS=$(git status --porcelain)
 
 parts=()
