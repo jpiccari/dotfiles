@@ -27,7 +27,7 @@ fi
 
 # Unstaged changes
 if echo "$GIT_STATUS" | grep -q '^.[ADMR]' >& /dev/null; then
-    flags+=("⚡.")
+    flags+=("💥.")
 fi
 
 # Untracked changes
