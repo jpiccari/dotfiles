@@ -47,6 +47,17 @@
     prompt = false
 
 
+# Replace tabs with 4 spaces
+[filter "spacify"]
+    clean = ruby -e 'ARGF.each { |line| puts line.gsub(/^(\\t)+/) { |indent| \"    \" * indent.length }}'
+    smudge = ruby -e 'ARGF.each { |line| puts line.gsub(/^(\\t)+/) { |indent| \"    \" * indent.length }}'
+
+# Replace 4 spaces with tab
+[filter "tabify"]
+    clean = ruby -e 'ARGF.each { |line| puts line.gsub(/^( {4})+/) { |indent| \"\t\" * indent.length }}'
+    smudge = ruby -e 'ARGF.each { |line| puts line.gsub(/^( {4})+/) { |indent| \"\t\" * indent.length }}'
+
+
 # Strip user configs from git file
 [filter "git_user_info"]
     clean = "sed -E -e '/^\\[user\\]/,/^\\[/{/^$|^\\[user\\]|^[^\\[]/d;}'"
