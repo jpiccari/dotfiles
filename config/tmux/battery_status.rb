@@ -1,11 +1,11 @@
-_, batt_percent, status, remaining = `pmset -g batt | tail -n +1`.match(/(\d+)%; ((?:dis)?charging); (\d+:\d+)?/).to_a
+_, batt_percent, status, remaining = `pmset -g batt | tail -n +1`.match(/(\d+)%; ((?:dis)?charg(?:ed|ing)); (\d+:\d+)?/).to_a
 
 batt_percent = batt_percent.to_i
 
-if status == 'charging' or remaining == nil
-    output = " #{batt_percent}% 🔌  "
-else
+if status == 'discharging' and remaining != nil
     output = " #{remaining} ⚡  "
+else
+    output = " #{batt_percent}% 🔌  "
 end
 
 if batt_percent > 40
