@@ -8,3 +8,5 @@ export NVM_DIR="$HOME/.nvm"
 if command -v rbenv >& /dev/null; then
 	eval "$(rbenv init -)"
 fi
+# Source local zprofile if available
+[ -f "$HOME/.zprofile" ] && source "$HOME/.zprofile"

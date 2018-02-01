@@ -120,3 +120,6 @@ command_not_found_handler() {
     # Standard error message
     return 127
 }
+
+# Source local zshrc if available
+[ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"

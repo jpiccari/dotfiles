@@ -11,3 +11,6 @@ if [ $(ps a | tail -n+2 | awk '{ print $2}' | uniq | wc -l) -le 2 ]; then
         rm "$SSH_AGENT_ENV"
     fi
 fi
+
+# Source local zlogout if available
+[ -f "$HOME/.zlogout" ] && source "$HOME/.zlogout"
