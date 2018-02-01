@@ -17,7 +17,7 @@ source "$SCRIPTDIR/spectrum"            # 256-bit color codes
 source "$SCRIPTDIR/functions"           # Custom functions
 source "$SCRIPTDIR/historySubstr"       # fish-style history search
 source "$SCRIPTDIR/commandPrompt"       # Command prompt settings
-source "$SCRIPTDIR/TerminalCWD"         # Help Terminal.app remember CWD
+source "$SCRIPTDIR/tmux_support"        # Help Terminal.app remember CWD
 source "$SCRIPTDIR/compsys"             # Awesome completion rules
 source "$SCRIPTDIR/syntaxHighlight"     # command syntax highlighting
 

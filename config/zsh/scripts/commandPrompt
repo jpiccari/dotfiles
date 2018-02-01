@@ -14,13 +14,6 @@ ZSH_PROMPT_COLOR_NO_SUCCESS="$FG[200]"
 
 # Setup our prompts
 precmd() {
-    if [ -n "$TMUX" ]; then
-        # Restore tmux-title to 'zsh'
-        printf "\033kzsh $(short_pwd)\033\\"
-        # Tell tmux to update the status bar
-        tmux refresh-client -S
-    fi
-
     PS1="%{${ZSH_PROMPT_COLOR_MAIN}%}"
 
     if $ZSH_PROMPT_BOLD; then
@@ -28,11 +21,4 @@ precmd() {
     fi
 
     PS1+="%3~%{$ZSH_PROMPT_COLOR_MAIN%} %(0?..%{${ZSH_PROMPT_COLOR_NO_SUCCESS}%})%(!.#.%%)%{${reset_color}$FX[reset]%} "
-}
-
-preexec() {
-    if [ -n "$TMUX" ]; then
-        # set tmux-title to running program
-        printf "\033k$(echo "$1" | cut -d" " -f1) $(short_pwd)\033\\"
-    fi
 }

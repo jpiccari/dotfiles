@@ -1,0 +1,57 @@
+#!/usr/bin/env zsh
+
+if [ -n "$TMUX" ]; then
+    autoload -Uz add-zsh-hook
+
+    if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+
+        _update_terminal_cwd() {
+            # Identify the directory using a "file:" scheme URL, including
+            # the host name to disambiguate local vs. remote paths.
+
+            # Percent-encode the pathname.
+            local URL_PATH=''
+            {
+                # Use LANG=C to process text byte-by-byte.
+                local i ch hexch LANG=C
+                for ((i = 1; i <= ${#PWD}; ++i)); do
+                    ch="$PWD[i]"
+                    if [[ "$ch" =~ [/._~A-Za-z0-9-] ]]; then
+                        URL_PATH+="$ch"
+                    else
+                        hexch=$(printf "%02X" "'$ch")
+                        URL_PATH+="%$hexch"
+                    fi
+                done
+            }
+
+            printf '\e]7;%s\a' "file://$HOST$URL_PATH"
+        }
+    fi
+
+    if type _update_terminal_cwd &> /dev/null; then
+        # Register the function so it is called whenever the working
+        # directory changes.
+        add-zsh-hook chpwd _update_terminal_cwd
+
+        # Tell the terminal about the initial directory.
+        _update_terminal_cwd
+    fi
+
+    # set tmux-title to running program
+    _tmux_preexec() {
+        if [ -n "$TMUX" ]; then
+            printf "\033k$(echo "$1" | cut -d" " -f1) $(short_pwd)\033\\"
+        fi
+    }
+    add-zsh-hook preexec _tmux_preexec
+
+
+    _tmux_precmd() {
+        # Restore tmux-title to 'zsh'
+        printf "\033kzsh $(short_pwd)\033\\"
+        # Tell tmux to update the status bar
+        tmux refresh-client -S
+    }
+    add-zsh-hook precmd _tmux_precmd
+fi
