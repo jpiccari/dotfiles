@@ -38,11 +38,11 @@ fi
 parts+=($(IFS=; echo "${flags[*]}"))
 parts+=($BRANCH)
 
-if [ $AHEAD_COUNT -gt 0 ]; then
+if [ -n "$AHEAD_COUNT" ] && [ $AHEAD_COUNT -gt 0 ]; then
     parts+=("#[fg=colour014]↑${AHEAD_COUNT}")
 fi
 
-if [ $BEHIND_COUNT -gt 0 ]; then
+if [ -n "$BEHIND_COUNT" ] && [ $BEHIND_COUNT -gt 0 ]; then
     parts+=("#[fg=colour166]↓${BEHIND_COUNT}")
 fi
 
