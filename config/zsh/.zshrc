@@ -1,11 +1,3 @@
-#!/usr/bin/env zsh
-
-# If we are not running in a tmux environment, start one
-if command -v tmux >& /dev/null && [ -z "$TMUX" ]; then
-    exec tmux $(tmux list-sessions >& /dev/null && echo "attach" || echo "new")
-fi
-
-
 # Set emacs mode
 set -o emacs
 
@@ -36,60 +28,8 @@ setopt inc_append_history           # incrementally append commands to history
 bindkey -s '^O' '^q$VISUAL \eg\n'
 
 
-# History variables
-export HISTSIZE=5000                # history entries saved in memory
-export SAVEHIST=25000               # history entires saved in $HISTFILE
-export HISTFILE="$HOME/.history"    # history file path
-
-
 # ZSH Syntax Highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-
-# ls Colors
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxAbabcxcx
-
-
-# less options
-export LESS="--tabs=4 --ignore-case -FRSX"
-
-
-# Start ssh-agent and add ssh keys
-SSH_AGENT_ENV="$HOME/.ssh/agent.env"
-
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    if [ ! -f "$SSH_AGENT_ENV" ]; then
-        (umask 066; ssh-agent -s > "$SSH_AGENT_ENV")
-    fi
-
-    source "$SSH_AGENT_ENV" >& /dev/null
-fi
-
-# Load ssh keys
-ssh-add $(find -E "$HOME/.ssh" -iregex '.*_[dr]sa') >& /dev/null
-
-
-# If docker-machine exists, setup the proper env
-if command -v docker-machine >& /dev/null; then
-    # Get the first docker vm as a fallback
-    local docker_vm=$(docker-machine ls -q | head -1)
-
-    # If a "default" vm exists, use it instead
-    if $(docker-machine ls -q | grep -q default); then
-        docker_vm="default"
-    fi
-
-    if [ -n "$docker_vm" ]; then
-        if [ $(docker-machine status "$docker_vm") != "Running" ]; then
-            echo "Starting docker vm \"$docker_vm\""
-            docker-machine start "$docker_vm" >& /dev/null
-            sleep 5
-        fi
-
-         eval $(docker-machine env "$docker_vm")
-     fi
-fi
 
 
 # ZSH handler for when a command is not found
