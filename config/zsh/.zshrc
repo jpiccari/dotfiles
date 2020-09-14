@@ -56,10 +56,10 @@ command_not_found_handler() {
         return 0;
     fi
 
-
     # Standard error message
+    echo "$SHELL: command not found: $1"
     return 127
 }
 
 # Source local zshrc if available
-[ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
